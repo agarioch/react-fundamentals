@@ -1,20 +1,26 @@
 // Styling
-// http://localhost:3000/isolated/exercise/05.js
 
 import React from 'react'
 import '../box-styles.css'
 
-// 💰 Use the className for the size and style (backgroundColor) for the color
-// 💰 each of the elements should also have the "box" className applied
+function Box({size, inlineStyles}) {
+  const boxColor = inlineStyles.backgroundColor
+  const text = [size, boxColor, 'box'].join(' ')
+  return (
+    <div
+      className={'box box--' + size}
+      style={{fontStyle: 'italic', ...inlineStyles}}
+    >
+      {text}
+    </div>
+  )
+}
 
-// 🐨 add a className prop to each of these and apply the correct class names
-// 💰 Here are the available class names: box, box--large, box--medium, box--small
-
-// 🐨 add a style prop to each of them as well so their background color
-// matches what the text says it should be as well as `fontStyle: 'italic'`
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+const smallBox = (
+  <Box size="small" inlineStyles={{backgroundColor: 'lightblue'}} />
+)
+const mediumBox = <Box size="medium" inlineStyles={{backgroundColor: 'pink'}} />
+const largeBox = <Box size="large" inlineStyles={{backgroundColor: 'orange'}} />
 
 function App() {
   return (
